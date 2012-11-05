@@ -1,0 +1,4 @@
+name: Demo
+version: 0.1
+main: edu.unca.nrodrigu.Demo.Demo
+load: startup
