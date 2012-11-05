@@ -8,7 +8,7 @@ import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.generator.BlockPopulator;
 
-public class DemoWaterPopulator extends BlockPopulator {
+public class DemoLavaPopulator extends BlockPopulator {
 	
 	public void populate(World world, Random random, Chunk chunk) {
 		int x, y, z;
@@ -16,10 +16,14 @@ public class DemoWaterPopulator extends BlockPopulator {
 		
 		for (x = 0; x < 16; ++x) {
 			for (z = 0; z < 16; ++z) {
-				for (y = 16; chunk.getBlock(x, y, z).getType() == Material.AIR; --y) {
-					block = chunk.getBlock(x,  y + 1,  z);
-					
-					block.setType(Material.WATER);
+				if (random.nextInt(100) < 50) {
+					for (y = 40; chunk.getBlock(x, y, z).getType() == Material.AIR; --y);
+					if (y > 25) {
+						block = chunk.getBlock(x,  y + 1,  z);
+						
+						block.setType(Material.LAVA);
+						block.setData((byte) 0x1);
+					}
 				}
 			}
 		}

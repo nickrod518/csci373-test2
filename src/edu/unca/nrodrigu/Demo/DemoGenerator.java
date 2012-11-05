@@ -17,6 +17,7 @@ public class DemoGenerator extends ChunkGenerator {
 		
 		populators.add(new DemoGrassPopulator());
 		populators.add(new DemoWaterPopulator());
+		populators.add(new DemoLavaPopulator());
 		
 		return populators;
 	}
