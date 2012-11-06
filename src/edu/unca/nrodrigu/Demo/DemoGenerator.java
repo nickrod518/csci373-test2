@@ -38,7 +38,7 @@ public class DemoGenerator extends ChunkGenerator {
 		octave.setScale(1 / 64.0);
 		
 		for (x = 0; x < 16; ++x) {
-			for (z = 8; z < 16; ++z) {
+			for (z = 0; z < 16; ++z) {
 				blocks[this.coordsToByte(x,  0,  z)] = (byte) Material.BEDROCK.getId();
 				
 				double noise = octave.noise(x + chunkX * 16,  z + chunkZ * 16,  0.5, 0.5) * 12;
