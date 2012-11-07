@@ -24,7 +24,7 @@ public class DemoGenerator extends ChunkGenerator {
 	}
 	
 	private int coordsToByte(int x, int y, int z) {
-		return (x * 16 * z) * 128 + y;
+		return (x * 16 + z) * 128 + y;
 	}
 	
 	public byte[] generate(World world, Random random, int chunkX, int chunkZ) {
@@ -39,15 +39,15 @@ public class DemoGenerator extends ChunkGenerator {
 		
 		for (x = 0; x < 16; ++x) {
 			for (z = 0; z < 16; ++z) {
-				blocks[this.coordsToByte(x,  0,  z)] = (byte) Material.BEDROCK.getId();
+				blocks[coordsToByte(x,  0,  z)] = (byte) Material.BEDROCK.getId();
 				
 				double noise = octave.noise(x + chunkX * 16,  z + chunkZ * 16,  0.5, 0.5) * 12;
 				
 				for (y = 1; y < 32 + noise; ++y) {
-					blocks[this.coordsToByte(x, y, z)] = (byte) Material.DIRT.getId();					
+					blocks[coordsToByte(x, y, z)] = (byte) Material.DIRT.getId();					
 				}
 				
-				blocks[this.coordsToByte(x, y, z)] = (byte) Material.GRASS.getId();
+				blocks[coordsToByte(x, y, z)] = (byte) Material.GRASS.getId();
 			}
 		}
 		
