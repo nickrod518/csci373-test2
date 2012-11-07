@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.generator.BlockPopulator;
@@ -23,6 +24,10 @@ public class DemoGenerator extends ChunkGenerator {
 		return populators;
 	}
 	
+	public Location getFixedSpawnLocation(World world, Random random) {
+		return new Location(world, 0, 39, 0);
+	}
+	
 	private int coordsToByte(int x, int y, int z) {
 		return (x * 16 + z) * 128 + y;
 	}
@@ -40,8 +45,10 @@ public class DemoGenerator extends ChunkGenerator {
 		for (x = 0; x < 16; ++x) {
 			for (z = 0; z < 16; ++z) {
 				blocks[coordsToByte(x,  0,  z)] = (byte) Material.BEDROCK.getId();
+				blocks[coordsToByte(x, 50, z)] = (byte) Material.LAVA.getId();
+				blocks[coordsToByte(x, 49, z)] = (byte) Material.GLASS.getId();
 				
-				double noise = octave.noise(x + chunkX * 16,  z + chunkZ * 16,  0.5, 0.5) * 12;
+				double noise = octave.noise(x + chunkX * 16,  z + chunkZ * 16,  0.5, 0.5) * 8;
 				
 				for (y = 1; y < 32 + noise; ++y) {
 					blocks[coordsToByte(x, y, z)] = (byte) Material.DIRT.getId();					

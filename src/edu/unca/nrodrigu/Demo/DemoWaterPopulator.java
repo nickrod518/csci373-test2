@@ -16,7 +16,7 @@ public class DemoWaterPopulator extends BlockPopulator {
 		
 		for (x = 0; x < 16; ++x) {
 			for (z = 0; z < 16; ++z) {
-				for (y = 16; chunk.getBlock(x, y, z).getType() == Material.AIR; --y) {
+				for (y = 28; chunk.getBlock(x, y, z).getType() == Material.AIR; --y) {
 					block = chunk.getBlock(x,  y + 1,  z);
 					
 					block.setType(Material.WATER);

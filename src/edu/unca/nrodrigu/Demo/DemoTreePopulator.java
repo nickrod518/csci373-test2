@@ -13,11 +13,11 @@ public class DemoTreePopulator extends BlockPopulator {
 	public void populate(World world, Random random, Chunk chunk) {
 		int x, y, z;
 		
-		if (random.nextInt(100) < 10) {
+		if (random.nextInt(100) < 75) {
 			x = 6 + random.nextInt(4);
 			z = 6 + random.nextInt(4);
 			
-			for (y = 40; chunk.getBlock(x, y, z).getType() == Material.AIR; --y);
+			for (y = 50; chunk.getBlock(x, y, z).getType() == Material.AIR; --y);
 			
 			TreeType type = (random.nextInt(100) < 30) ? TreeType.BIG_TREE : TreeType.TREE;
 			

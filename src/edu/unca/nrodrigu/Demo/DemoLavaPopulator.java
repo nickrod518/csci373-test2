@@ -16,9 +16,9 @@ public class DemoLavaPopulator extends BlockPopulator {
 		
 		for (x = 0; x < 16; ++x) {
 			for (z = 0; z < 16; ++z) {
-				if (random.nextInt(100) < 50) {
+				if (random.nextInt(100) < 15) {
 					for (y = 40; chunk.getBlock(x, y, z).getType() == Material.AIR; --y);
-					if (y > 25) {
+					if (y > 38) {
 						block = chunk.getBlock(x,  y + 1,  z);
 						
 						block.setType(Material.LAVA);
